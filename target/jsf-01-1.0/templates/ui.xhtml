@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+
+	<h:head>
+	
+		<f:facet name="first">
+			<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+			<title>PrimeFaces - ShowCase</title>
+			<link rel="shortcut icon" type="image/png" href="#{request.contextPath}/images/favicon.png" />
+		</f:facet>
+
+		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/default.css" />
+		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
+
+		<ui:insert name="head"></ui:insert>
+
+		<script type="text/javascript">
+			$(function() {
+				$('.sidebar a').hover(function() {
+					$(this).toggleClass('ui-state-hover');
+				})
+			});
+		</script>
+
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push([ '_setAccount', 'UA-12200033-3' ]);
+			_gaq.push([ '_trackPageview' ]);
+
+			(function() {
+				var ga = document.createElement('script');
+				ga.type = 'text/javascript';
+				ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+						: 'http://www')
+						+ '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+		
+	</h:head>
+
+	<h:body>
+
+		<div id="header" class="ui-widget ui-widget-header">
+			<div id="logo">
+				<img src="#{request.contextPath}/images/logo.png" alt="Logo" />
+			</div>
+			
+			<div id="logo">
+       			<h:outputText value="     running on #{helloWorld.ip}" />
+ 			</div>
+			
+			<div id="globalthemeswitcher">
+				<h:form>
+					<p:themeSwitcher value="#{themeSwitcherBean.theme}"
+						style="width:175px;" effect="fade" var="t">
+						<f:selectItem itemLabel="Choose Theme" itemValue="" />
+						<f:selectItems value="#{themeSwitcherBean.advancedThemes}" var="theme" itemLabel="#{theme.name}" itemValue="#{theme}" />
+												<p:ajax listener="#{themeSwitcherBean.saveTheme}" />
+						                        <p:column>
+						                            <h:graphicImage name="images/themes/#{t.image}" />
+						                        </p:column>
+
+						<p:column>
+                            #{t.name}
+                        </p:column>
+					</p:themeSwitcher>
+				</h:form>
+			</div>
+			
+	        <p:menubar>
+	            <p:submenu label="CalendarScheduler" icon="ui-icon-folder-open">
+	                <p:menuitem value="Home page" icon="ui-icon-document" outcome="/index"/>
+	                <p:separator/>
+	                <p:menuitem value="Sample page" icon="ui-icon-document" outcome="/pages/samplePage"/>
+	                <p:menuitem value="Account page" icon="ui-icon-document" outcome="/pages/account/account"/>
+	                <p:menuitem value="Participant page" icon="ui-icon-document" outcome="/pages/participant/participant"/>
+	                <p:separator/>
+	                <p:menuitem value="Login page" icon="ui-icon-check" outcome="/pages//login/login"/>
+	            </p:submenu>
+	
+	            <p:submenu label="Ops" icon="ui-icon-folder-open">
+	                <p:menuitem value="Buttom" url="http://www.primefaces.org/showcase/ui/button/button.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="AccordionPanel" url="http://www.primefaces.org/showcase/ui/panel/accordionPanel.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="Responsive" url="http://www.primefaces.org/showcase/ui/misc/responsive.xhtml" icon="ui-icon-extlink"/>
+	            </p:submenu>
+	
+	            <p:submenu label="Test Tools" icon="ui-icon-folder-open">
+	                <p:menuitem value="Buttom" url="http://www.primefaces.org/showcase/ui/button/button.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="AccordionPanel" url="http://www.primefaces.org/showcase/ui/panel/accordionPanel.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="Responsive" url="http://www.primefaces.org/showcase/ui/misc/responsive.xhtml" icon="ui-icon-extlink"/>
+	            </p:submenu>
+	
+	            <p:submenu label="NPS Master Data" icon="ui-icon-folder-open">
+	                <p:menuitem value="Buttom" url="http://www.primefaces.org/showcase/ui/button/button.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="AccordionPanel" url="http://www.primefaces.org/showcase/ui/panel/accordionPanel.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="Responsive" url="http://www.primefaces.org/showcase/ui/misc/responsive.xhtml" icon="ui-icon-extlink"/>
+	            </p:submenu>
+	
+	            <p:submenu label="User Management" icon="ui-icon-folder-open">
+	                <p:menuitem value="Buttom" url="http://www.primefaces.org/showcase/ui/button/button.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="AccordionPanel" url="http://www.primefaces.org/showcase/ui/panel/accordionPanel.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="Responsive" url="http://www.primefaces.org/showcase/ui/misc/responsive.xhtml" icon="ui-icon-extlink"/>
+	            </p:submenu>
+	
+	            <p:submenu label="AMM" icon="ui-icon-folder-open">
+	                <p:menuitem value="Buttom" url="http://www.primefaces.org/showcase/ui/button/button.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="AccordionPanel" url="http://www.primefaces.org/showcase/ui/panel/accordionPanel.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="Responsive" url="http://www.primefaces.org/showcase/ui/misc/responsive.xhtml" icon="ui-icon-extlink"/>
+	            </p:submenu>
+	
+	            <p:submenu label="Billing" icon="ui-icon-folder-open">
+	                <p:menuitem value="Buttom" url="http://www.primefaces.org/showcase/ui/button/button.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="AccordionPanel" url="http://www.primefaces.org/showcase/ui/panel/accordionPanel.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="Responsive" url="http://www.primefaces.org/showcase/ui/misc/responsive.xhtml" icon="ui-icon-extlink"/>
+	            </p:submenu>
+	
+	            <p:submenu label="MDM" icon="ui-icon-folder-open">
+	                <p:menuitem value="Buttom" url="http://www.primefaces.org/showcase/ui/button/button.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="AccordionPanel" url="http://www.primefaces.org/showcase/ui/panel/accordionPanel.xhtml" icon="ui-icon-extlink"/>
+	                <p:menuitem value="Responsive" url="http://www.primefaces.org/showcase/ui/misc/responsive.xhtml" icon="ui-icon-extlink"/>
+	            </p:submenu>
+	
+	            <f:facet name="options">
+	                <p:outputPanel rendered="#{!loginManager.userLoggedIn}">
+	                    <p:button  value="Log Out" icon="ui-icon-gear" outcome="/pages/logout/logout"/>
+	                </p:outputPanel>
+	            </f:facet>
+	        </p:menubar>			
+
+		</div>
+
+		<div id="page" class="ui-widget">
+			<div id="content">
+				<div class="post">
+					<ui:insert name="content">...</ui:insert>
+				</div>
+			</div>
+
+			<div style="clear: both;"></div>
+		</div>
+
+		<ui:insert name="footer">
+			<div id="footer" class="ui-widget ui-widget-header ui-corner-all">
+				<p class="copyright">JSF2 application</p>
+			</div>
+		</ui:insert>
+
+		<ui:insert name="status">
+			<p:ajaxStatus
+				style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+				<f:facet name="start">
+					<p:graphicImage value="/images/loading.gif" />
+				</f:facet>
+
+				<f:facet name="complete">
+					<h:outputText value="" />
+				</f:facet>
+			</p:ajaxStatus>
+		</ui:insert>
+
+		<ui:insert name="highlight">
+			<script language="javascript" src="#{request.contextPath}/syntaxhighlighter/scripts/sh.js"></script>
+			<script language="javascript">
+				SyntaxHighlighter.all();
+			</script>
+		</ui:insert>
+
+	</h:body>
+
+
+</f:view>
+</html>
